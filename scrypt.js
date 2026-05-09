@@ -1,8 +1,8 @@
 const googleUrl =
-  'https://script.google.com/macros/s/AKfycbyqr2Ab0myAQqtMOUwd6RoreQtkCU72Udn_-RZpvEoE-nyAv_3SBoC-3lWIasIOya85OA/exec';
+  'https://script.google.com/macros/s/AKfycbwZJR_mXbfT2rK-DBuLXMlbpVoD_eGemOfe2p5-5_vlCAdmmPyxIJaUfatfWz5cN7l_UA/exec';
 
 const modal = document.getElementById('aiModal');
-const btn = document.getElementById('openModal'); // Переконайтеся, що у вашій кнопки id="openModal"
+const btn = document.getElementById('openModal');
 const closeBtn = document.getElementById('closeModal');
 const chatBox = document.getElementById('chatBox');
 const userInput = document.getElementById('userInput');
@@ -11,15 +11,28 @@ const sendBtn = document.getElementById('sendMessage');
 let step = 0;
 let clientName = '';
 
-// Відкрити чат
+// Відкрити модальне вікно
 if (btn) {
-  btn.onclick = () => (modal.style.display = 'flex');
+  btn.onclick = function () {
+    modal.style.display = 'flex';
+  };
 }
 
-// Закрити чат
-closeBtn.onclick = () => (modal.style.display = 'none');
+// Закрити модальне вікно
+if (closeBtn) {
+  closeBtn.onclick = function () {
+    modal.style.display = 'none';
+  };
+}
 
-// Функція відображення повідомлень
+// Закриття при кліку поза вікном
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+};
+
+// Функція додавання повідомлень у чат
 function addMessage(text, sender) {
   const msgDiv = document.createElement('div');
   msgDiv.classList.add('message', sender);
@@ -28,16 +41,16 @@ function addMessage(text, sender) {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Функція збереження в Google Таблицю
+// Відправка даних у Google Таблицю
 async function saveToGoogle(name, contact) {
   try {
     await fetch(googleUrl, {
       method: 'POST',
-      mode: 'no-cors', // Важливо для Google Scripts
+      mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: name, contact: contact }),
     });
-    console.log('Дані успішно відправлені!');
+    console.log('Дані відправлено');
   } catch (e) {
     console.error('Помилка відправки:', e);
   }
@@ -66,7 +79,6 @@ async function handleChat() {
         'ai',
       );
 
-      // ВІДПРАВКА В ТАБЛИЦЮ
       await saveToGoogle(clientName, clientContact);
       step = 2;
     } else {
@@ -75,7 +87,14 @@ async function handleChat() {
   }, 1000);
 }
 
-sendBtn.onclick = handleChat;
-userInput.onkeypress = e => {
-  if (e.key === 'Enter') handleChat();
-};
+// Обробка натискання кнопки відправити
+if (sendBtn) {
+  sendBtn.onclick = handleChat;
+}
+
+// Відправка по Enter
+if (userInput) {
+  userInput.onkeypress = function (e) {
+    if (e.key === 'Enter') handleChat();
+  };
+}

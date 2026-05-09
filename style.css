@@ -237,18 +237,20 @@ footer {
   .bg-icon-animated { display: none; } /* Прибираємо важкі елементи на мобілках */
 }
 /* МОДАЛЬНЕ ВІКНО */
+
+
 .modal-overlay {
+    display: none; /* ЦЕ ОБОВ'ЯЗКОВО, щоб приховати чат спочатку */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
-    display: none; /* Сховано за замовчуванням */
+    backdrop-filter: blur(8px);
+    z-index: 99999;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
 }
 
 .modal-content {
