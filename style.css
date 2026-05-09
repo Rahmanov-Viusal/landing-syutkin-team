@@ -1,0 +1,238 @@
+:root {
+  --bg-deep: #0a0a0c;
+  --accent-red: #e11d48;
+  --text-main: #ffffff;
+  --text-dim: #94a3b8;
+  --overlay: rgba(10, 10, 12, 0.85);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Це лікує "поїхавший" екран */
+  background-color: var(--bg-deep);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+}
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: 
+    linear-gradient(to bottom, transparent 0%, var(--bg-deep) 100%),
+    linear-gradient(var(--overlay), var(--overlay)),
+    url("https://images.unsplash.com/photo-1530143584549-3685366acc9b?fit=crop&w=1950&q=80") center/cover fixed;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 10;
+  padding: 20px;
+}
+
+.logo-container {
+  width: 220px;
+  margin: 0 auto 30px;
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(225, 29, 72, 0.3);
+}
+
+.logo-img {
+  width: 100%;
+  display: block;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 10vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.tagline {
+  color: var(--accent-red);
+  letter-spacing: 5px;
+  font-weight: 800;
+  margin-top: 10px;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+}
+
+/* АНІМАЦІЯ ІКОНОК */
+.disciplines-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.icon-box {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.4);
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+.icon-box:nth-child(2) { animation-delay: 0.4s; }
+.icon-box:nth-child(3) { animation-delay: 0.8s; }
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* MAIN CONTENT BOX */
+.content-wrapper {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ФОНОВА ІКОНКА - тепер вона не розтягує екран */
+.bg-icon-animated {
+  position: absolute;
+  top: 100px;
+  right: -100px;
+  font-size: 20rem;
+  color: rgba(225, 29, 72, 0.03);
+  z-index: -1;
+  animation: rotateSlow 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* КАРТКА ОПИСУ */
+.intro-card {
+  background: rgba(20, 20, 25, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 60px 40px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  margin-top: -60px; /* Наплив на Hero */
+  position: relative;
+  z-index: 5;
+}
+
+.section-title-red {
+  color: var(--accent-red);
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.intro-text {
+  color: var(--text-dim);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+/* ГАЛЕРЕЯ */
+.gallery-title {
+  text-align: center;
+  margin: 80px 0 40px;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  aspect-ratio: 4/5;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* КНОПКА ТА СТА */
+.cta-section {
+  text-align: center;
+  padding: 100px 0;
+}
+
+.btn-main {
+  text-decoration: none;
+  color: white;
+  background: var(--accent-red);
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-weight: 900;
+  display: inline-block;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.pulse {
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(225, 29, 72, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+}
+
+/* FOOTER */
+footer {
+  background: #050505;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.social-links {
+  margin-bottom: 20px;
+}
+
+.social-bounce {
+  color: white;
+  font-size: 2rem;
+  margin: 0 15px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.social-bounce:hover {
+  color: var(--accent-red);
+  transform: translateY(-5px);
+}
+
+/* МОБІЛЬНА АДАПТАЦІЯ */
+@media (max-width: 768px) {
+  .hero { height: 80vh; }
+  .intro-card { padding: 40px 20px; margin-top: -30px; }
+  .bg-icon-animated { display: none; } /* Прибираємо важкі елементи на мобілках */
+}
