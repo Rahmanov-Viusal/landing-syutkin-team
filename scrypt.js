@@ -1,5 +1,5 @@
 const googleUrl =
-  'https://script.google.com/macros/s/AKfycbwVrHIKpHtKh23zj95W6wWVm1N8SpbEna_mhJbBVxAesvaCGa60WLEYh_dqtBNJSgfZVg/exec';
+  'https://script.google.com/macros/s/AKfycbyqr2Ab0myAQqtMOUwd6RoreQtkCU72Udn_-RZpvEoE-nyAv_3SBoC-3lWIasIOya85OA/exec';
 
 const modal = document.getElementById('aiModal');
 const btn = document.getElementById('openModal'); // Переконайтеся, що у вашій кнопки id="openModal"
@@ -62,7 +62,7 @@ async function handleChat() {
     } else if (step === 1) {
       const clientContact = text;
       addMessage(
-        "Дякую! Передаю дані тренеру. Сергій Сюткін зв'яжеться з тобою найближчим часом. From Human to Ironman! 🚀",
+        "Дякую! Передаю дані тренеру. Олексій Сюткін зв'яжеться з тобою найближчим часом. From Human to Ironman! 🚀",
         'ai',
       );
 
