@@ -1,5 +1,5 @@
 const googleUrl =
-  'https://script.google.com/macros/s/AKfycbyCkSYA7_9HZ7u2vXE6T_n58HIg8VaDCRYmVuTqMR4g0J6JohsRSRZZLcG4gntPBmdvNg/exec';
+  'https://script.google.com/macros/s/AKfycbwVrHIKpHtKh23zj95W6wWVm1N8SpbEna_mhJbBVxAesvaCGa60WLEYh_dqtBNJSgfZVg/exec';
 
 const modal = document.getElementById('aiModal');
 const btn = document.getElementById('openModal'); // Переконайтеся, що у вашій кнопки id="openModal"
