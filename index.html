@@ -109,9 +109,48 @@
 
       <section class="cta-section" data-aos="flip-up">
         <h2 class="cta-title">ГОТОВИЙ КИНУТИ ВИКЛИК СОБІ?</h2>
-        <a href="https://instagram.com/syutkin_team" class="btn-main pulse"
+        <!-- Змінюємо кнопку (додаємо id та прибираємо посилання) -->
+        <a href="javascript:void(0)" id="openModal" class="btn-main pulse"
           >Приєднатися до команди</a
         >
+
+        <!-- СТРУКТУРА МОДАЛЬНОГО ВІКНА -->
+        <!-- МОДАЛЬНЕ ВІКНО ЧАТУ -->
+<div id="aiModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="ai-info">
+                <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+                <div>
+                    <h3>Syutkin AI Agent</h3>
+                    <span class="status">Онлайн</span>
+                </div>
+            </div>
+            <button id="closeModal" class="close-btn">&times;</button>
+        </div>
+        <div id="chatBox" class="chat-box">
+            <div class="message ai">Привіт! Я — AI-асистент Syutkin Team. Як тебе звати?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Напишіть відповідь..." autocomplete="off">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
+            <div class="chat-input-area">
+              <input
+                type="text"
+                id="userInput"
+                placeholder="Напишіть повідомлення..."
+                autocomplete="off"
+              />
+              <button id="sendMessage">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -135,5 +174,6 @@
         disable: 'mobile', // Вимкнути анімацію на слабких телефонах для стабільності
       });
     </script>
+    <script src="./scrypt.js"></script>
   </body>
 </html>
